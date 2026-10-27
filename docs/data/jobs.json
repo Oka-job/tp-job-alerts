@@ -1,5 +1,244 @@
 [
  {
+  "id": "13227eedc25fdd3d",
+  "title": "Integrated Campaign Manager",
+  "company": "Jobgether",
+  "location": "United Arab Emirates",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jobs.lever.co/jobgether/2f478de9-257c-407a-81b3-2ca0d44ad342",
+  "posted": "2026-10-20",
+  "salary": "No salary mentioned",
+  "match": 64,
+  "section": "unlisted",
+  "contract": false,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Lever",
+  "sent_on": "2026-10-27"
+ },
+ {
+  "id": "0c1925850ef7b931",
+  "title": "Junior Digital Marketing Strategist",
+  "company": "Jobgether",
+  "location": "India",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jobs.lever.co/jobgether/fadf8a19-0e46-4ef5-8720-79685602c499",
+  "posted": "2026-10-21",
+  "salary": "No salary mentioned",
+  "match": 52,
+  "section": "unlisted",
+  "contract": false,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Lever",
+  "sent_on": "2026-10-27"
+ },
+ {
+  "id": "2c5664d5c0e87ef1",
+  "title": "Digital Marketing Strategist",
+  "company": "Jobgether",
+  "location": "India",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jobs.lever.co/jobgether/e553c8bd-f5c1-475a-a4bd-f38340320dc1",
+  "posted": "2026-10-21",
+  "salary": "No salary mentioned",
+  "match": 52,
+  "section": "unlisted",
+  "contract": false,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Lever",
+  "sent_on": "2026-10-27"
+ },
+ {
+  "id": "7d1f8c1e29b8bc2e",
+  "title": "Senior Ecommerce Manager, Emerging Brands",
+  "company": "Jobgether",
+  "location": "India",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jobs.lever.co/jobgether/ab6c0eb3-ea4c-465b-913c-7edcbc016110",
+  "posted": "2026-10-22",
+  "salary": "No salary mentioned",
+  "match": 50,
+  "section": "unlisted",
+  "contract": false,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Lever",
+  "sent_on": "2026-10-27"
+ },
+ {
+  "id": "a032069c66465b7c",
+  "title": "Duck Creek QA Analyst (Cloud Migration)",
+  "company": "Jobgether",
+  "location": "India",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jobs.lever.co/jobgether/607c16c8-d8de-45a4-b54b-e7d7f3066df4",
+  "posted": "2026-10-26",
+  "salary": "No salary mentioned",
+  "match": 48,
+  "section": "near",
+  "contract": false,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Lever",
+  "sent_on": "2026-10-27"
+ },
+ {
+  "id": "fbad3ec2717cfabd",
+  "title": "Migration Expert (SQL Server to PostgreSQL)",
+  "company": "Jobgether",
+  "location": "India",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jobs.lever.co/jobgether/c3bdabc1-3aed-4685-ae05-24958338006f",
+  "posted": "2026-10-23",
+  "salary": "No salary mentioned",
+  "match": 46,
+  "section": "near",
+  "contract": false,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Lever",
+  "sent_on": "2026-10-27"
+ },
+ {
+  "id": "ed24279d27924fb1",
+  "title": "Technical project manager - Network infrastructure",
+  "company": "Jobgether",
+  "location": "India",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jobs.lever.co/jobgether/dbac18c8-1817-45c1-b0d1-2ba6438071a4",
+  "posted": "2026-10-21",
+  "salary": "No salary mentioned",
+  "match": 46,
+  "section": "near",
+  "contract": false,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Lever",
+  "sent_on": "2026-10-27"
+ },
+ {
+  "id": "6242eabdee1214ec",
+  "title": "Head of Communications",
+  "company": "Tailscale",
+  "location": "Anywhere in the World",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://weworkremotely.com/remote-jobs/tailscale-head-of-communications",
+  "posted": "2026-10-26",
+  "salary": "163-203 LPA",
+  "match": 45,
+  "section": "near",
+  "contract": false,
+  "from_alert": false,
+  "flags": [
+   {
+    "level": "warn",
+    "text": "pay looks too high for the experience asked"
+   },
+   {
+    "level": "info",
+    "text": "unusual title, but the description matches your work"
+   }
+  ],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "WeWorkRemotely",
+  "sent_on": "2026-10-27"
+ },
+ {
+  "id": "efd3aee30602c454",
+  "title": "Global Project Support Analyst",
+  "company": "Jobgether",
+  "location": "India",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jobs.lever.co/jobgether/4cb336a5-a118-40d2-b0da-efc39b50b419",
+  "posted": "2026-10-20",
+  "salary": "No salary mentioned",
+  "match": 42,
+  "section": "near",
+  "contract": false,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Lever",
+  "sent_on": "2026-10-27"
+ },
+ {
+  "id": "f021a005c9613b88",
+  "title": "Digital Marketing Sr. Coordinator",
+  "company": "Jobgether",
+  "location": "India",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jobs.lever.co/jobgether/55482eb1-23ca-491f-8feb-d5dd0c0e9a08",
+  "posted": "2026-10-20",
+  "salary": "No salary mentioned",
+  "match": 42,
+  "section": "near",
+  "contract": false,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Lever",
+  "sent_on": "2026-10-27"
+ },
+ {
   "id": "06497117c8fb8c63",
   "title": "Ad Operations Manager",
   "company": "Jobgether",
