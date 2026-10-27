@@ -357,7 +357,7 @@ def scam_flags(job, cfg_salary=None):
 # HARD title blocks: these titles are never a fit, whatever the description says.
 TITLE_EXCLUDE = re.compile(
     r"\b(engineer\w*|developer|devops|architect\w*|designer|design|ux|ui|sales|sdr|bdr|"
-    r"business development|security|cyber\w*|recruit\w*|talent acquisition|data scientist|machine learning|ml|ai|"
+    r"business development|new business|security|cyber\w*|recruit\w*|talent acquisition|data scientist|machine learning|ml|ai|"
     r"software|programmer|full[- ]stack|backend|frontend|front[- ]end|back[- ]end|legal|counsel|attorney|"
     r"accountant|nurse|driver|technician|mechanic|analytics|"
     r"video|videographer|animat\w+|photograph\w*|graphic\w*|copywrit\w*|social media|influencer)\b", re.I)
@@ -419,6 +419,9 @@ def too_many_office_days(text):
     return bool(_OFFICE_DAYS.search(text or ""))
 
 
+_MUST = re.compile(r"essential|required|requirement|mandatory|must|necessary|needed|is key", re.I)
+
+
 def needs_foreign_language(text, languages):
     """True when a non-English language is a requirement (not just a bonus)."""
     langs = "|".join(re.escape(l) for l in languages)
@@ -426,9 +429,13 @@ def needs_foreign_language(text, languages):
                      rf"[^.\n]{{0,40}}\b(?:{langs})\b", re.I)
     rx2 = re.compile(rf"\b(?:{langs})\b[^.\n]{{0,30}}(?:native|fluent|fluency|speaker|mother tongue|proficien\w*|"
                      rf"language skills?)", re.I)
+    text = text or ""
     for rx in (rx1, rx2):
-        for m in rx.finditer(text or ""):
-            s = (text or "")[max(0, m.start() - 60): m.end() + 60]
+        for m in rx.finditer(text):
+            near = text[max(0, m.start() - 40): m.end() + 40]
+            if _MUST.search(near):          # "... German is essential" counts even if a "plus" is mentioned nearby
+                return True
+            s = text[max(0, m.start() - 60): m.end() + 60]
             if not _SOFTEN.search(s):
                 return True
     return False

@@ -9,10 +9,12 @@ daily_count: 10            # max jobs per message (fewer if fewer qualify)
 max_age_days: 0            # 0 = no limit on how old a posting is (fresher jobs are still ranked first)
 max_experience_years: 5    # skip jobs whose minimum experience is above this (jobs asking 1-5 years are fine)
 max_per_company: 2         # stops one company filling the whole list
+cap_exempt: [jobgether]    # Jobgether posts jobs for many different companies, so the limit does not apply to it
 alert_daily_count: 10      # jobs per day in the SEPARATE message built from alert emails (LinkedIn / Naukri / Indeed)
 alert_queue_max_days: 30   # alert-email jobs wait in a queue and are released daily; unsent ones expire after this many days (30)
 allow_unknown_date: true   # jobs with no posting date are kept (only matters if max_age_days is set)
-near_match_fill: false     # no padding with weak matches
+near_match_fill: true      # if fewer than 10 jobs reach the match bar, the best of the rest fill the list (labelled 'Near match' with their %)
+near_min_score: 0          # anything that passed the filters can fill the list
 strict_min_score: 50       # match % needed to be shown
 suspicious_listed_max: 3   # how many suspicious jobs to show (separately)
 
@@ -75,6 +77,8 @@ roles:
     - campaign coordinator
     - campaign lead
     - campaign analyst
+    - campaign qa
+    - campaign quality
     - digital campaign*
     - brandzone*
     - sponsored ads
@@ -147,6 +151,10 @@ roles:
     - project coordination
     - migration
     - reporting dashboards
+    - campaign qa
+    - q&a
+    - quality assurance
+    - campaign testing
     - marketplace
     - e-commerce
     - ecommerce
@@ -171,6 +179,8 @@ skills:
   - campaign reporting
   - campaign execution
   - campaign compliance
+  - campaign qa
+  - q&a
   - stakeholder management
   - client servicing
   - account management
@@ -279,4 +289,3 @@ sources:
       - {name: "Procter & Gamble", host: pg.wd5.myworkdayjobs.com, tenant: pg, site: 1000}
       - {name: "Lowe's", host: lowes.wd5.myworkdayjobs.com, tenant: lowes, site: LWS_External_CS}
       - {name: Kimberly-Clark, host: kimberlyclark.wd1.myworkdayjobs.com, tenant: kimberlyclark, site: GLOBAL}
-      - {name: Walmart, host: walmart.wd5.myworkdayjobs.com, tenant: walmart, site: WalmartExternal}

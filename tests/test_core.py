@@ -564,3 +564,67 @@ class DescriptionFirst(unittest.TestCase):
     def test_source_prefilters_let_odd_titles_through(self):
         self.assertTrue(rules.TITLE_SOFT.search("Content Controller"))
         self.assertFalse(rules.TITLE_EXCLUDE.search("Content Controller"))
+
+
+class CapExempt(unittest.TestCase):
+    def test_aggregator_is_not_limited_to_two_jobs(self):
+        js = []
+        for i in range(5):
+            j = job(title=f"Retail Media Campaign Manager {i}", company="Jobgether", url=f"https://e.com/{i}")
+            self.assertIsNone(pipeline.evaluate(j, CFG, NOW, {}))
+            pipeline.score(j, CFG)
+            js.append(j)
+        picked, _ = pipeline.select(js, CFG)
+        self.assertEqual(len(picked), 5)
+        others = [dict(j, company="SameCo") for j in js]
+        picked, _ = pipeline.select(others, CFG)
+        self.assertEqual(len(picked), CFG["max_per_company"])
+
+
+class Round3Changes(unittest.TestCase):
+    def test_german_essential_is_dropped_even_with_a_plus_nearby(self):
+        d = ("Nice to have: Klaviyo experience is a plus. Fluency in written and spoken German is essential. "
+             "You will run campaigns for clients. ")
+        self.assertEqual(drop(description="Fully remote. " + d + FILL)[0], "needs a non-English language")
+        self.assertEqual(drop(description="Fully remote. Fluency in written and spoken German is essential " + FILL)[0],
+                         "needs a non-English language")
+
+    def test_german_as_a_bonus_is_still_fine(self):
+        self.assertIsNone(drop(description="Fully remote. Fluent German is a plus. " + FILL)[0])
+        self.assertIsNone(drop(description="Fully remote. German is a nice to have. " + FILL)[0])
+
+    def test_new_business_titles_are_sales(self):
+        self.assertEqual(drop(title="Account Manager, New Business & Closing")[0], "title outside your field")
+
+    def test_campaign_qa_counts_as_your_work(self):
+        r, j = drop(title="Campaign QA Specialist")
+        self.assertIsNone(r)
+        self.assertEqual(j["role_tier"], "high")
+        d = "Fully remote. Run Q&A on campaign briefs, quality assurance of ad placements and campaign testing. "
+        r, j = drop(title="Operations Specialist", description=d + FILL)
+        self.assertIsNone(r)
+        self.assertEqual(j["role_tier"], "desc")
+
+    def test_list_is_filled_to_ten_with_near_matches(self):
+        js = []
+        for i in range(14):
+            j = job(title="Account Manager", company=f"Co{i}", url=f"https://e.com/{i}",
+                    description="Fully remote. Keep client files tidy. " + FILL)
+            self.assertIsNone(pipeline.evaluate(j, CFG, NOW, {}))
+            pipeline.score(j, CFG)
+            self.assertLess(j["score"], CFG["strict_min_score"])
+            js.append(j)
+        picked, _ = pipeline.select(js, CFG)
+        self.assertEqual(len(picked), 10)
+        self.assertTrue(all(j["section"] == "near" for j in picked))
+
+    def test_good_matches_come_before_near_matches(self):
+        weak = [job(title="Account Manager", company=f"W{i}", url=f"https://e.com/w{i}",
+                    description="Fully remote. Keep client files tidy. " + FILL) for i in range(12)]
+        strong = job(company="Strong", url="https://e.com/s", description="Fully remote. Retail media with Criteo in ecommerce. " + FILL)
+        for j in weak + [strong]:
+            pipeline.evaluate(j, CFG, NOW, {})
+            pipeline.score(j, CFG)
+        picked, _ = pipeline.select(weak + [strong], CFG)
+        self.assertEqual(picked[0]["company"], "Strong")
+        self.assertEqual(picked[0]["section"], "unlisted")

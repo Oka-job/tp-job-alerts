@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
-<title>Oku Job Tracker</title>
+<title>TP Job Tracker</title>
 <style>
   :root{--bg:#f6f3fb;--card:#ffffff;--ink:#2b2d42;--mute:#6f7389;--line:#e6e1f0;--acc:#7a8cf0;--accd:#5b6ee0}
-  *{box-sizing:border-box} body{margin:0;background-color:#fdf3f6;background-image:radial-gradient(circle at 20px 20px,rgba(255,190,110,.30) 2px,transparent 3px),radial-gradient(circle at 60px 60px,rgba(150,170,255,.22) 2px,transparent 3px),linear-gradient(135deg,#fff0f6 0%,#eef2ff 45%,#fff7de 100%);background-size:80px 80px,80px 80px,100% 100%;background-attachment:fixed;color:var(--ink);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+  *{box-sizing:border-box} body{margin:0;background-color:#14172b;background-image:linear-gradient(160deg,#1b1f3a 0%,#14172b 55%,#101226 100%);background-attachment:fixed;color:var(--ink);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
   .wrap{max-width:920px;margin:0 auto;padding:16px}
-  h1{font-size:24px;margin:4px 0 12px;color:#4a4e8a}
+  h1{font-size:24px;margin:4px 0 12px;color:#e6e8ff}
   .stats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
   .stat{border-radius:12px;padding:8px 14px;min-width:96px}
   .stat b{display:block;font-size:20px}.stat span{font-size:12px;opacity:.8}
@@ -24,9 +24,10 @@
   .match{font-weight:700;border-radius:999px;padding:3px 11px;white-space:nowrap}
   .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:8px}
   .row textarea{flex:1;min-width:200px;height:34px;resize:vertical}
-  .rate{width:84px} a{color:var(--accd)} .empty{color:var(--mute);text-align:center;padding:30px 0}
-  details{margin:10px 0} summary{cursor:pointer;color:var(--accd)}
-  .note{color:var(--mute);font-size:12px;margin-top:14px}
+  .rate{width:84px} a{color:var(--accd)} .empty{color:#aab0d6;text-align:center;padding:30px 0}
+  details{margin:10px 0} summary{cursor:pointer;color:#b9c3ff}
+  .note{color:#aab0d6;font-size:12px;margin-top:14px}
+  .bar .sub{color:#c3c8e8}
   #syncbox{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin-bottom:12px;font-size:13px}
   /* palette: every colour used for a label is defined here */
   .c-toapply{background:#ffe97a;color:#6b5600}.c-applied{background:#a9cdff;color:#1b4a94}
@@ -42,7 +43,7 @@
 </head>
 <body>
 <div class="wrap">
-  <h1>Oku Job Tracker ⭐</h1>
+  <h1>TP Job Tracker</h1>
   <div class="stats" id="stats"></div>
   <div id="syncbox"></div>
 

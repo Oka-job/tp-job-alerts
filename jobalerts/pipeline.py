@@ -158,6 +158,7 @@ def score(job, cfg):
 def select(jobs, cfg):
     """Returns (picked, flagged). picked is at most daily_count jobs."""
     n, cap = cfg.get("daily_count", 10), cfg.get("max_per_company", 2)
+    exempt = {norm(x) for x in cfg.get("cap_exempt", [])}      # job boards that post for many companies
     ok = [j for j in jobs if not j["suspicious"]]
     sus = [j for j in jobs if j["suspicious"]]
 
@@ -176,7 +177,7 @@ def select(jobs, cfg):
             if len(picked) >= n:
                 return
             c = norm(j.get("company"))
-            if c and per[c] >= cap:
+            if c and c not in exempt and per[c] >= cap:
                 continue
             per[c] += 1
             j["section"] = section_of(j)
@@ -306,6 +307,7 @@ def update_queue(queue, new_jobs, blocked_keys, today, max_days):
 def pick_from_queue(queue, cfg, now):
     """Returns (jobs to send today, queue entries that stay)."""
     n, cap = cfg.get("alert_daily_count", 10), cfg.get("max_per_company", 2)
+    exempt = {norm(x) for x in cfg.get("cap_exempt", [])}
     jobs = [deserialize_job(q, now) for q in queue]
     jobs.sort(key=lambda j: (-(j.get("score") or 0), j.get("queued_on") or ""))
     picked, per, chosen = [], Counter(), set()
@@ -313,7 +315,7 @@ def pick_from_queue(queue, cfg, now):
         if len(picked) >= n:
             break
         c = norm(j.get("company"))
-        if c and per[c] >= cap:
+        if c and c not in exempt and per[c] >= cap:
             continue
         per[c] += 1
         j["section"] = "salary" if j.get("salary_status") == "in_range" else "unlisted"
