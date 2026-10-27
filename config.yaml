@@ -1,0 +1,282 @@
+# ---------------------------------------------------------------------------
+# Job alert settings. Edit freely.
+# NOTE: if your GitHub repo is PUBLIC (needed for the free tracker website),
+# everything in this file is public too. To keep the salary range private,
+# see README, "Keeping your salary range private".
+# ---------------------------------------------------------------------------
+
+daily_count: 10            # max jobs per message (fewer if fewer qualify)
+max_age_days: 0            # 0 = no limit on how old a posting is (fresher jobs are still ranked first)
+max_experience_years: 5    # skip jobs whose minimum experience is above this (jobs asking 1-5 years are fine)
+max_per_company: 2         # stops one company filling the whole list
+alert_daily_count: 10      # jobs per day in the SEPARATE message built from alert emails (LinkedIn / Naukri / Indeed)
+alert_queue_max_days: 30   # alert-email jobs wait in a queue and are released daily; unsent ones expire after this many days (30)
+allow_unknown_date: true   # jobs with no posting date are kept (only matters if max_age_days is set)
+near_match_fill: false     # no padding with weak matches
+strict_min_score: 50       # match % needed to be shown
+suspicious_listed_max: 3   # how many suspicious jobs to show (separately)
+
+salary:
+  min_lpa: 10              # a salary that is clearly listed below this is dropped. No salary listed = kept (own section)
+  max_lpa: 30              # NOT a filter: only used to spot too-good-to-be-true pay. Higher salaries are always kept
+  near_tolerance: 0        # no leniency below the minimum
+  # Approximate conversion to INR for foreign salaries. Update now and then.
+  rates_to_inr: {INR: 1, USD: 88.0, EUR: 102.0, GBP: 118.0, AUD: 57.0, CAD: 64.0, SGD: 66.0, AED: 24.0}
+
+# Hybrid jobs are only accepted in these places (and only if they ask for 3 office days a week or fewer).
+# Remote comes first, then Bangalore hybrid, then Mumbai hybrid. Onsite jobs are always skipped.
+hybrid_cities:
+  - bengaluru
+  - bangalore
+  - whitefield
+  - koramangala
+  - indiranagar
+  - hsr layout
+  - electronic city
+  - marathahalli
+  - bellandur
+  - mumbai          # also matches Navi Mumbai
+  - navi mumbai
+  - thane
+  - andheri
+  - powai
+  - goregaon
+  - malad
+  - bandra
+  - worli
+  - lower parel
+  - vikhroli
+  - kurla
+  - airoli
+  - vashi
+  - belapur
+  - mahape
+  - ghansoli
+  - bkc
+
+# Bangalore hybrid gets a small ranking boost over Mumbai hybrid; remote gets a bigger one.
+priority_cities: [bengaluru, bangalore, whitefield, koramangala, indiranagar, hsr layout, electronic city, marathahalli, bellandur]
+mode_bonus: {remote: 4, hybrid_priority: 2}
+
+# How a job is judged: the TITLE and the DESCRIPTION both count.
+#  - Title has a "high" or "medium" word -> strong / good fit.
+#  - Odd title (for example "Content Controller") -> still kept if the DESCRIPTION mentions 3 or more of the
+#    phrases in "high" + "duties" below.
+#  - Titles that are clearly another field (engineer, designer, sales...) are always dropped (see rules.py).
+roles:
+  high:      # closest to your work: retail media, campaigns, PR and communications
+    - retail media
+    - ad operations
+    - ad ops
+    - campaign manager
+    - campaign executive
+    - campaign operations
+    - campaign specialist
+    - campaign coordinator
+    - campaign lead
+    - campaign analyst
+    - digital campaign*
+    - brandzone*
+    - sponsored ads
+    - sponsored products
+    - public relations
+    - corporate communications
+    - corporate affairs
+    - media relations
+    - brand communications
+    - communications manager
+    - communications executive
+    - communications specialist
+    - communications associate
+    - pr manager
+    - pr executive
+    - pr account*
+    - reputation management
+  medium:    # adjacent: account handling, e-commerce, marketplace and project work
+    - account manager
+    - account handler
+    - client servicing
+    - client service*
+    - client partner
+    - ecommerce
+    - e-commerce
+    - category analyst
+    - category operations
+    - category executive
+    - category associate
+    - merchandis*
+    - marketplace
+    - retail operations
+    - digital marketing
+    - project coordinator
+    - program coordinator
+    - programme coordinator
+    - project manager
+    - migration
+    - pim
+    - stibo
+    - product content
+    - catalog*
+    - catalogue*
+  duties:    # phrases in a job DESCRIPTION that describe your kind of work
+    - campaign execution
+    - campaign management
+    - campaign delivery
+    - campaign reporting
+    - campaign planning
+    - campaign briefs
+    - client servicing
+    - client communication
+    - client relationship*
+    - stakeholder management
+    - stakeholder*
+    - account management
+    - account handling
+    - media planning
+    - ad placement*
+    - ad activation
+    - ad operations
+    - onsite media
+    - brand partners
+    - approvals
+    - compliance
+    - press release*
+    - media relations
+    - brand communications
+    - social media campaign*
+    - project coordination
+    - migration
+    - reporting dashboards
+    - marketplace
+    - e-commerce
+    - ecommerce
+
+# Tools and skills from your CV (more matches = higher %).
+skills:
+  - salesforce
+  - dynamics 365
+  - hubspot
+  - criteo
+  - amplience
+  - stibo
+  - agatha
+  - power bi
+  - excel
+  - asana
+  - trello
+  - notion
+  - canva
+  - retail media
+  - brandzone*
+  - campaign reporting
+  - campaign execution
+  - campaign compliance
+  - stakeholder management
+  - client servicing
+  - account management
+  - project coordination
+  - press release*
+  - media relations
+
+industry:
+  - ecommerce
+  - e-commerce
+  - retail
+  - fmcg
+  - cpg
+  - consumer goods
+  - grocery
+  - marketplace
+  - d2c
+  - supermarket
+  - advertising
+  - ad tech
+  - adtech
+  - martech
+  - agency
+  - public relations
+  - communications
+  - brands
+  - beauty
+  - fashion
+
+# Languages that count as "needs a non-English language" (Hindi/Marathi are fine).
+foreign_languages: [danish, german, french, spanish, portuguese, italian, dutch, swedish, norwegian, finnish,
+                    polish, russian, japanese, korean, mandarin, chinese, cantonese, arabic, turkish, hebrew,
+                    czech, thai, vietnamese, indonesian, bahasa, greek, hungarian, romanian, ukrainian, tagalog]
+
+# ---------------------------------------------------------------------------
+# Where jobs come from. Only sources that allow automated access are used.
+# LinkedIn and Naukri forbid scraping, so they are NOT used. Set up their own
+# free email alerts as a complement (see README).
+# Each run prints which sources worked; a source that breaks is skipped.
+# ---------------------------------------------------------------------------
+sources:
+  remotive:        # remote job board. Max 4 calls/day allowed, so keep <= 4 queries
+    enabled: true
+    queries: [retail media, campaign manager, account manager, communications]
+  remoteok:
+    enabled: true
+  weworkremotely:
+    enabled: true
+  himalayas:
+    enabled: true
+    pages: 5
+  jobicy:
+    enabled: true
+    geos: [india, apac, anywhere]
+  adzuna:          # switched off: its free plan is too small
+    enabled: false
+    queries: [retail media, campaign manager, account manager ecommerce, public relations]
+    max_days_old: 30
+  serpapi:         # Google Jobs (includes LinkedIn / Naukri / Indeed postings). Free key SERPAPI_KEY, skipped without it
+    enabled: true
+    queries: [retail media remote India, campaign manager ecommerce remote India, account manager ecommerce remote India, public relations communications remote India, ecommerce campaign manager hybrid Bengaluru, communications account manager hybrid Mumbai]
+    max_searches: 4        # free plan has a small monthly allowance, so only the first N queries run each day
+  jooble:          # free key JOOBLE_KEY (request at jooble.org/api/about), skipped without it
+    enabled: true
+    queries: [retail media remote, campaign manager remote, account manager ecommerce remote, communications remote, campaign manager hybrid Bengaluru, account manager hybrid Mumbai]
+
+  email_alerts:    # reads the platforms' own alert emails from a dedicated Gmail (secrets ALERT_INBOX_USER / ALERT_INBOX_PASS)
+    enabled: true
+    lookback_days: 7       # looks back a week so a missed run or a weekly email is never lost. Repeats are removed automatically
+    senders: [linkedin.com, naukri.com, indeed.com]
+
+  # ----- Company career pages --------------------------------------------
+  # Add a company by its name in the career-page web address:
+  #   boards.greenhouse.io/<name>   jobs.lever.co/<name>   jobs.ashbyhq.com/<name>   apply.workable.com/<name>
+  # The lists below were set up for you. meesho (Lever) and lenskart (Workable) were confirmed working earlier; the others are
+  # NOT confirmed. The first run's log says 'board not found' for any wrong name, and those can simply be removed.
+  greenhouse:
+    enabled: true
+    companies: []
+  lever:
+    enabled: true
+    companies: [meesho, jobgether]
+  ashby:
+    enabled: true
+    companies: []
+  workable:
+    enabled: true
+    companies: [lenskart]
+  # SmartRecruiters. Name is case sensitive (taken from its jobs address).
+  smartrecruiters:
+    enabled: true
+    companies: []
+    max_details_per_company: 40
+  # Workday is used by many big retailers and FMCG companies. These entries are NOT yet confirmed:
+  # the first run's log says "board not found" for any that are wrong. Each needs host, tenant and site, which
+  # appear in the company's jobs address: https://<host>/<site>  (tenant is the first part of <host>).
+  workday:
+    enabled: true
+    queries: [retail media, campaign, account manager, communications, ecommerce, marketplace]
+    pages: 2
+    max_details_per_company: 25
+    companies:
+      - {name: Target, host: target.wd5.myworkdayjobs.com, tenant: target, site: targetcareers}
+      - {name: Nike, host: nike.wd1.myworkdayjobs.com, tenant: nike, site: nke}
+      - {name: Unilever, host: unilever.wd3.myworkdayjobs.com, tenant: unilever, site: Unilever_Experienced_Professionals}
+      - {name: "Procter & Gamble", host: pg.wd5.myworkdayjobs.com, tenant: pg, site: 1000}
+      - {name: "Lowe's", host: lowes.wd5.myworkdayjobs.com, tenant: lowes, site: LWS_External_CS}
+      - {name: Kimberly-Clark, host: kimberlyclark.wd1.myworkdayjobs.com, tenant: kimberlyclark, site: GLOBAL}
+      - {name: Walmart, host: walmart.wd5.myworkdayjobs.com, tenant: walmart, site: WalmartExternal}

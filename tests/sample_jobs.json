@@ -1,0 +1,200 @@
+[
+ {
+  "source": "Sample",
+  "source_id": "Retail Media Campaign ManagerNorthwind Retail",
+  "title": "Retail Media Campaign Manager",
+  "company": "Northwind Retail",
+  "location": "Remote - India",
+  "url": "https://example.com/jobs/retail-media-campaign-managernorthwind-retail",
+  "days_ago": 1,
+  "description": "Fully remote. 3-5 years experience in retail media. Salary: INR 16-22 LPA. You will own campaign execution and campaign reporting, client communication and stakeholder management for brand partners across retail and ecommerce channels, and coordinate approvals and compliance.",
+  "remote_source": true
+ },
+ {
+  "source": "Sample",
+  "source_id": "Account Manager, Retail MediaFabrikam Commerce",
+  "title": "Account Manager, Retail Media",
+  "company": "Fabrikam Commerce",
+  "location": "Worldwide",
+  "url": "https://example.com/jobs/account-manager-retail-mediafabrikam-commerce",
+  "days_ago": 2,
+  "description": "Remote role. 3+ years experience. Compensation USD 30000 - 36000 per year. You will own campaign execution and campaign reporting, client communication and stakeholder management for brand partners across retail and ecommerce channels, and coordinate approvals and compliance.",
+  "remote_source": true
+ },
+ {
+  "source": "Sample",
+  "source_id": "Corporate Communications ManagerContoso Brands",
+  "title": "Corporate Communications Manager",
+  "company": "Contoso Brands",
+  "location": "Bengaluru, India",
+  "url": "https://example.com/jobs/corporate-communications-managercontoso-brands",
+  "days_ago": 3,
+  "description": "Hybrid, 2 days a week in the office. 4 years experience in corporate communications and media relations. Salary: INR 14-18 LPA. You will write press releases and manage media relations and brand communications.",
+  "workplace": "hybrid"
+ },
+ {
+  "source": "Sample",
+  "source_id": "Public Relations ExecutiveTailspin Agency",
+  "title": "Public Relations Executive",
+  "company": "Tailspin Agency",
+  "location": "Mumbai, India",
+  "url": "https://example.com/jobs/public-relations-executivetailspin-agency",
+  "days_ago": 2,
+  "description": "Hybrid, 3 days a week in the office. 2-4 years experience. PR account handling, media relations and client servicing for consumer brands.",
+  "workplace": "hybrid"
+ },
+ {
+  "source": "Sample",
+  "source_id": "Content ControllerAdventure Works",
+  "title": "Content Controller",
+  "company": "Adventure Works",
+  "location": "Remote, India",
+  "url": "https://example.com/jobs/content-controlleradventure-works",
+  "days_ago": 2,
+  "description": "Fully remote. You will own campaign execution and campaign reporting, client communication and stakeholder management for brand partners across retail and ecommerce channels, and coordinate approvals and compliance.",
+  "remote_source": true
+ },
+ {
+  "source": "Sample",
+  "source_id": "Client Servicing ManagerWingtip Digital",
+  "title": "Client Servicing Manager",
+  "company": "Wingtip Digital",
+  "location": "Remote - India",
+  "url": "https://example.com/jobs/client-servicing-managerwingtip-digital",
+  "days_ago": 4,
+  "description": "Fully remote. 3-5 years experience in digital campaigns and client servicing. You will own campaign execution and campaign reporting, client communication and stakeholder management for brand partners across retail and ecommerce channels, and coordinate approvals and compliance.",
+  "remote_source": true
+ },
+ {
+  "source": "Sample",
+  "source_id": "Ecommerce Campaign ExecutiveLitware Grocery",
+  "title": "Ecommerce Campaign Executive",
+  "company": "Litware Grocery",
+  "location": "Hybrid - Bangalore",
+  "url": "https://example.com/jobs/ecommerce-campaign-executivelitware-grocery",
+  "days_ago": 5,
+  "description": "Hybrid, 2 days in office. 2-4 years experience. Salary not disclosed. You will own campaign execution and campaign reporting, client communication and stakeholder management for brand partners across retail and ecommerce channels, and coordinate approvals and compliance.",
+  "workplace": "hybrid"
+ },
+ {
+  "source": "Sample",
+  "source_id": "Project Coordinator, Platform MigrationProseware Retail",
+  "title": "Project Coordinator, Platform Migration",
+  "company": "Proseware Retail",
+  "location": "Remote - India",
+  "url": "https://example.com/jobs/project-coordinator-platform-migrationproseware-retail",
+  "days_ago": 6,
+  "description": "Fully remote. 3 years experience. Coordinate a migration across platforms with stakeholder management and approvals. You will own campaign execution and campaign reporting, client communication and stakeholder management for brand partners across retail and ecommerce channels, and coordinate approvals and compliance.",
+  "remote_source": true
+ },
+ {
+  "source": "Sample",
+  "source_id": "Account ManagerCoho Sales Co",
+  "title": "Account Manager",
+  "company": "Coho Sales Co",
+  "location": "Remote - India",
+  "url": "https://example.com/jobs/account-managercoho-sales-co",
+  "days_ago": 1,
+  "description": "Fully remote. You must meet monthly sales targets and upsell services to clients. 3 years experience.",
+  "remote_source": true
+ },
+ {
+  "source": "Sample",
+  "source_id": "Sales ManagerAlpine Ski House",
+  "title": "Sales Manager",
+  "company": "Alpine Ski House",
+  "location": "Remote - India",
+  "url": "https://example.com/jobs/sales-manageralpine-ski-house",
+  "days_ago": 1,
+  "description": "Fully remote. You will own campaign execution and campaign reporting, client communication and stakeholder management for brand partners across retail and ecommerce channels, and coordinate approvals and compliance.",
+  "remote_source": true
+ },
+ {
+  "source": "Sample",
+  "source_id": "Campaign ManagerBlue Yonder",
+  "title": "Campaign Manager",
+  "company": "Blue Yonder",
+  "location": "Gurugram, India",
+  "url": "https://example.com/jobs/campaign-managerblue-yonder",
+  "days_ago": 1,
+  "description": "Work from office, 5 days a week. 3 years experience. You will own campaign execution and campaign reporting, client communication and stakeholder management for brand partners across retail and ecommerce channels, and coordinate approvals and compliance.",
+  "workplace": "onsite"
+ },
+ {
+  "source": "Sample",
+  "source_id": "Corporate Communications ManagerDatum Corp",
+  "title": "Corporate Communications Manager",
+  "company": "Datum Corp",
+  "location": "Pune, India",
+  "url": "https://example.com/jobs/corporate-communications-managerdatum-corp",
+  "days_ago": 1,
+  "description": "Hybrid, 3 days in office. You will own campaign execution and campaign reporting, client communication and stakeholder management for brand partners across retail and ecommerce channels, and coordinate approvals and compliance.",
+  "workplace": "hybrid"
+ },
+ {
+  "source": "Sample",
+  "source_id": "Campaign ManagerFourth Coffee",
+  "title": "Campaign Manager",
+  "company": "Fourth Coffee",
+  "location": "Mumbai, India",
+  "url": "https://example.com/jobs/campaign-managerfourth-coffee",
+  "days_ago": 1,
+  "description": "Hybrid: 5 days a week in the office. 3 years experience. You will own campaign execution and campaign reporting, client communication and stakeholder management for brand partners across retail and ecommerce channels, and coordinate approvals and compliance.",
+  "workplace": "hybrid"
+ },
+ {
+  "source": "Sample",
+  "source_id": "Campaign ManagerWoodgrove",
+  "title": "Campaign Manager",
+  "company": "Woodgrove",
+  "location": "Remote - USA only",
+  "url": "https://example.com/jobs/campaign-managerwoodgrove",
+  "days_ago": 1,
+  "description": "Fully remote. 3 years experience. You will own campaign execution and campaign reporting, client communication and stakeholder management for brand partners across retail and ecommerce channels, and coordinate approvals and compliance.",
+  "remote_source": true
+ },
+ {
+  "source": "Sample",
+  "source_id": "Media Relations SpecialistMargie Travel",
+  "title": "Media Relations Specialist",
+  "company": "Margie Travel",
+  "location": "Worldwide",
+  "url": "https://example.com/jobs/media-relations-specialistmargie-travel",
+  "days_ago": 1,
+  "description": "Remote. 3 years experience. Daily content creation, video editing and copywriting for social channels.",
+  "remote_source": true
+ },
+ {
+  "source": "Sample",
+  "source_id": "Senior Retail Media ManagerTrey Research",
+  "title": "Senior Retail Media Manager",
+  "company": "Trey Research",
+  "location": "Remote - India",
+  "url": "https://example.com/jobs/senior-retail-media-managertrey-research",
+  "days_ago": 2,
+  "description": "Fully remote. 5 years experience. Salary: INR 22-30 LPA. You will own campaign execution and campaign reporting, client communication and stakeholder management for brand partners across retail and ecommerce channels, and coordinate approvals and compliance.",
+  "remote_source": true
+ },
+ {
+  "source": "Sample",
+  "source_id": "Campaign ExecutiveLucerne Publishing",
+  "title": "Campaign Executive",
+  "company": "Lucerne Publishing",
+  "location": "Remote - India",
+  "url": "https://example.com/jobs/campaign-executivelucerne-publishing",
+  "days_ago": 2,
+  "description": "Fully remote. Salary: INR 5-7 LPA. You will own campaign execution and campaign reporting, client communication and stakeholder management for brand partners across retail and ecommerce channels, and coordinate approvals and compliance.",
+  "remote_source": true
+ },
+ {
+  "source": "Sample",
+  "source_id": "Brand Communications ExecutiveRelecloud",
+  "title": "Brand Communications Executive",
+  "company": "Relecloud",
+  "location": "Remote, Europe only",
+  "url": "https://example.com/jobs/brand-communications-executiverelecloud",
+  "days_ago": 2,
+  "description": "Remote. You will own campaign execution and campaign reporting, client communication and stakeholder management for brand partners across retail and ecommerce channels, and coordinate approvals and compliance.",
+  "remote_source": true
+ }
+]
