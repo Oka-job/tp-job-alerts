@@ -745,3 +745,33 @@ class SourceParsing(unittest.TestCase):
             self.assertEqual(sources.rss({"feeds": [{"name": "Bad", "url": "https://x.example/f"}]}), [])
         finally:
             sources.http = orig
+
+
+class FlaggedRound2(unittest.TestCase):
+    """Four more jobs she said were not for her, plus the one she said was perfect."""
+    GENERIC = ("Fully remote. Stakeholder management, compliance, quality assurance, approvals and process improvement "
+               "across teams. ")
+
+    def test_generic_business_words_do_not_make_a_job_yours(self):
+        for t in ("Estimator I", "Payroll Expert, Project Temporary", "Associate Clinical Operations Leader"):
+            self.assertEqual(drop(title=t, description=self.GENERIC + FILL)[0], "title and description not in your field", t)
+
+    def test_technical_account_manager_is_blocked(self):
+        self.assertEqual(drop(title="Technical Account Manager")[0], "title outside your field")
+
+    def test_us_only_beats_anywhere_in_the_world(self):
+        d = "Fully remote. We're only hiring those authorized to work in the United States. " + FILL
+        self.assertEqual(drop(location="Anywhere in the World", description=d)[0], "remote but not open to India")
+        self.assertIsNone(drop(location="Anywhere in the World", description="Fully remote. Open to candidates in India. " + FILL)[0])
+
+    def test_u_s_based_in_brackets(self):
+        self.assertEqual(drop(title="Content Coordinator (U.S. Based, Remote Contractor)", location="Remote")[0],
+                         "remote but not open to India")
+
+    def test_entry_level_is_kept(self):
+        self.assertIsNone(drop(title="Entry-Level Account Manager")[0])       # her choice: show them
+
+    def test_content_coordinator_stays_a_fit(self):
+        r, j = drop(title="Content Coordinator")
+        self.assertIsNone(r)
+        self.assertEqual(j["role_tier"], "medium")
