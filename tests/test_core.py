@@ -180,9 +180,9 @@ class Selection(unittest.TestCase):
             out.append(j)
         return out
 
-    def test_cap_at_ten(self):
-        picked, _ = pipeline.select(self.make(30), CFG)
-        self.assertEqual(len(picked), 10)
+    def test_cap_at_daily_count(self):
+        picked, _ = pipeline.select(self.make(40), CFG)
+        self.assertEqual(len(picked), CFG["daily_count"])
 
     def test_company_cap(self):
         js = self.make(5)
@@ -605,9 +605,9 @@ class Round3Changes(unittest.TestCase):
         self.assertIsNone(r)
         self.assertEqual(j["role_tier"], "desc")
 
-    def test_list_is_filled_to_ten_with_near_matches(self):
+    def test_list_is_filled_with_near_matches(self):
         js = []
-        for i in range(14):
+        for i in range(30):
             j = job(title="Account Manager", company=f"Co{i}", url=f"https://e.com/{i}",
                     description="Fully remote. Keep client files tidy. " + FILL)
             self.assertIsNone(pipeline.evaluate(j, CFG, NOW, {}))
@@ -615,12 +615,12 @@ class Round3Changes(unittest.TestCase):
             self.assertLess(j["score"], CFG["strict_min_score"])
             js.append(j)
         picked, _ = pipeline.select(js, CFG)
-        self.assertEqual(len(picked), 10)
+        self.assertEqual(len(picked), CFG["daily_count"])
         self.assertTrue(all(j["section"] == "near" for j in picked))
 
     def test_good_matches_come_before_near_matches(self):
         weak = [job(title="Account Manager", company=f"W{i}", url=f"https://e.com/w{i}",
-                    description="Fully remote. Keep client files tidy. " + FILL) for i in range(12)]
+                    description="Fully remote. Keep client files tidy. " + FILL) for i in range(25)]
         strong = job(company="Strong", url="https://e.com/s", description="Fully remote. Retail media with Criteo in ecommerce. " + FILL)
         for j in weak + [strong]:
             pipeline.evaluate(j, CFG, NOW, {})
@@ -628,3 +628,120 @@ class Round3Changes(unittest.TestCase):
         picked, _ = pipeline.select(weak + [strong], CFG)
         self.assertEqual(picked[0]["company"], "Strong")
         self.assertEqual(picked[0]["section"], "unlisted")
+
+
+class DailyMix(unittest.TestCase):
+    def pool(self, remote, blr, mum):
+        out = []
+        for kind, count, kw in (("R", remote, {}),
+                                ("B", blr, dict(remote_source=False, workplace="hybrid", location="Bengaluru, India")),
+                                ("M", mum, dict(remote_source=False, workplace="hybrid", location="Mumbai, India"))):
+            for i in range(count):
+                j = job(title="Retail Media Campaign Manager", company=f"{kind}{i}", url=f"https://e.com/{kind}{i}", **kw)
+                self.assertIsNone(pipeline.evaluate(j, CFG, NOW, {}))
+                pipeline.score(j, CFG)
+                out.append(j)
+        return out
+
+    def counts(self, picked):
+        return [sum(1 for j in picked if pipeline.bucket_of(j, CFG) == b) for b in ("remote", "blr", "mum")]
+
+    def test_ten_remote_five_bangalore_five_mumbai(self):
+        picked, _ = pipeline.select(self.pool(14, 9, 9), CFG)
+        self.assertEqual(self.counts(picked), [10, 5, 5])
+        self.assertEqual(len(picked), 20)
+
+    def test_missing_group_hands_its_places_to_the_others(self):
+        picked, _ = pipeline.select(self.pool(14, 9, 0), CFG)
+        self.assertEqual(len(picked), 20)
+        self.assertEqual(self.counts(picked)[2], 0)
+        picked, _ = pipeline.select(self.pool(14, 1, 2), CFG)
+        self.assertEqual(len(picked), 17)           # only 17 passed in total
+        self.assertEqual(self.counts(picked), [14, 1, 2])
+        picked, _ = pipeline.select(self.pool(25, 1, 2), CFG)
+        self.assertEqual(len(picked), 20)
+        self.assertEqual(self.counts(picked)[1:], [1, 2])
+
+    def test_fewer_jobs_than_ten_gives_what_exists(self):
+        picked, _ = pipeline.select(self.pool(2, 1, 1), CFG)
+        self.assertEqual(len(picked), 4)
+
+    def test_experience_three_to_five_ranks_higher(self):
+        a = job(company="A", url="https://e.com/a", description="Fully remote. 4 years of experience. Retail media. " + FILL)
+        b = job(company="B", url="https://e.com/b", description="Fully remote. 1 year of experience. Retail media. " + FILL)
+        for j in (a, b):
+            self.assertIsNone(pipeline.evaluate(j, CFG, NOW, {}))
+            pipeline.score(j, CFG)
+        self.assertEqual((a["min_years"], b["min_years"]), (4, 1))
+        self.assertGreater(a["score"], b["score"])
+        self.assertEqual(drop(description="Fully remote. 6 years of experience. " + FILL)[0], "asks for too much experience")
+
+
+class FlaggedByTanvee(unittest.TestCase):
+    """Real jobs she received and said were not for her."""
+
+    def test_senior_years_are_read_after_a_we_heading(self):
+        d = "Fully remote.\n\nWhat We Are Looking For\n\n10+ years of experience in public relations, product communications. "
+        self.assertEqual(rules.required_experience(d), 10)
+        pr = "You will own corporate communications, media relations, brand communications and public relations. "
+        self.assertEqual(drop(title="Head of Communications", description=pr + d + FILL)[0], "asks for too much experience")
+        self.assertIsNone(rules.required_experience("We have 15 years of experience serving retailers."))
+
+    def test_twelve_and_seven_to_ten_years(self):
+        self.assertEqual(drop(title="Account Manager", description="Fully remote. At least 12 years of relevant professional experience in IT services. " + FILL)[0],
+                         "asks for too much experience")
+        self.assertEqual(drop(title="Account Manager", description="Fully remote. 7–10+ years of dedicated project management experience. " + FILL)[0],
+                         "asks for too much experience")
+
+    def test_it_titles_are_blocked(self):
+        for t in ("Migration Expert (SQL Server to PostgreSQL)", "Duck Creek QA Analyst (Cloud Migration)",
+                  "Technical project manager - Network infrastructure", "Migration Lead – SAP ECC to Jaggaer S2P",
+                  "Paid Social Manager", "Senior Project Manager, Cloud Infrastructure"):
+            self.assertEqual(drop(title=t)[0], "title outside your field", t)
+
+    def test_it_description_is_dropped_even_with_a_vague_title(self):
+        d = ("Fully remote. Project Manager for cloud migration on AWS and Azure. You need a technical background, "
+             "Kubernetes and CI/CD experience, and Python scripting. " + FILL)
+        self.assertEqual(drop(title="Project Manager", description=d)[0], "IT / engineering role")
+        self.assertIsNone(drop(title="Project Manager", description=DescriptionFirst.WORK + "Use Excel and Power BI. " + FILL)[0])
+
+    def test_expand_existing_accounts_is_upselling(self):
+        self.assertEqual(drop(title="Account Manager", description="Fully remote. Identify opportunities to expand existing accounts. " + FILL)[0],
+                         "sales targets / cold calling / upselling")
+
+
+class SourceParsing(unittest.TestCase):
+    def test_lever_joins_lists_and_additional_text(self):
+        j = {"descriptionPlain": "Opening text.", "lists": [{"text": "Requirements", "content": "<li>At least 12 years of experience</li><li>German is essential</li>"}],
+             "additionalPlain": "Salary details here."}
+        text = sources._lever_text(j)
+        self.assertIn("At least 12 years of experience", text)
+        self.assertIn("Requirements", text)
+        self.assertIn("Salary details here.", text)
+        self.assertEqual(rules.required_experience(text), 12)
+
+    def test_generic_rss_reader(self):
+        xml = b"""<?xml version="1.0"?><rss><channel>
+          <item><title>Campaign Manager at Acme</title><link>https://e.com/1</link><description>&lt;p&gt;Run campaigns&lt;/p&gt;</description>
+          <pubDate>Tue, 27 Oct 2026 10:00:00 +0000</pubDate></item></channel></rss>"""
+
+        class R:
+            content = xml
+
+        orig, sources.http = sources.http, lambda url, **kw: R()
+        try:
+            jobs = sources.rss({"feeds": [{"name": "Test board", "url": "https://x.example/feed", "remote": True}]})
+        finally:
+            sources.http = orig
+        self.assertEqual(len(jobs), 1)
+        self.assertEqual((jobs[0]["title"], jobs[0]["company"], jobs[0]["remote_source"]), ("Campaign Manager", "Acme", True))
+        self.assertIn("Run campaigns", jobs[0]["description"])
+
+    def test_rss_feed_that_fails_is_skipped(self):
+        def boom(url, **kw):
+            raise RuntimeError("down")
+        orig, sources.http = sources.http, boom
+        try:
+            self.assertEqual(sources.rss({"feeds": [{"name": "Bad", "url": "https://x.example/f"}]}), [])
+        finally:
+            sources.http = orig
