@@ -88,14 +88,15 @@ _BLOCK = re.compile(
 _DESC_RESTRICT = re.compile(
     r"(?:must|need to|should)\s+(?:be\s+)?(?:located|based|residing|reside|living|live)\s+(?:in|within)\s+(?:the\s+)?"
     r"(?:us|usa|u\.s\.|united states|uk|united kingdom|canada|europe|eu)\b"
+    r"|(?:only|just)\s+hiring\s+(?:those\s+|candidates\s+|people\s+)?(?:who\s+are\s+)?authori[sz]ed\s+to\s+work\s+in\s+(?:the\s+)?(?:us|u\.s\.|united states|uk|united kingdom|canada|eu)"
     r"|(?:us|u\.s\.|united states|uk|canadian|eu)\s+(?:residents?|citizens?)\s+only"
     r"|authori[sz]ed\s+to\s+work\s+in\s+(?:the\s+)?(?:us|u\.s\.|united states|uk|united kingdom|canada|eu)\b"
     r"|(?:us|u\.s\.|uk|canada)[- ]based\s+(?:candidates|applicants|only)", re.I)
 
 
 _TITLE_PAREN = re.compile(
-    r"[\(\[][^)\]]*\b(?:us|usa|u\.s\.a?\.?|uk|u\.k\.|eu|emea|canada|europe|latam|north america|americas|"
-    r"united states|united kingdom)\b[^)\]]*[\)\]]", re.I)
+    r"[\(\[][^)\]]*(?<![a-z0-9])(?:us|usa|u\.s\.a?\.?|uk|u\.k\.|eu|emea|canada|europe|latam|north america|americas|"
+    r"united states|united kingdom)(?![a-z0-9])[^)\]]*[\)\]]", re.I)
 _DESC_ANYWHERE = re.compile(
     r"work from anywhere|anywhere in the world|(?:hir\w+|open to|candidates?|applicants?)[^.\n]{0,40}"
     r"(?:worldwide|globally|anywhere)", re.I)
@@ -112,15 +113,16 @@ def remote_eligibility(job):
     if _TITLE_PAREN.search(title):
         return "no"
     loc = job.get("location") or ""
+    desc = job.get("description") or ""
+    restricted = bool(_DESC_RESTRICT.search(desc)) and not re.search(r"\bindia\b", desc, re.I)
     if _STRONG_OK.search(loc):
         return "yes"
     if _BLOCK.search(loc):
         return "no"
+    if restricted:                  # "we're only hiring those authorized to work in the United States" beats "Anywhere"
+        return "no"
     if _ANYWHERE.search(loc):
         return "yes"
-    desc = job.get("description") or ""
-    if _DESC_RESTRICT.search(desc) and not re.search(r"\bindia\b", desc, re.I):
-        return "no"
     head = desc[:2500]
     if re.search(r"\b(?:india|apac|asia[- ]pacific)\b", head, re.I) or _DESC_ANYWHERE.search(head):
         return "yes"
@@ -362,7 +364,7 @@ TITLE_EXCLUDE = re.compile(
     r"software|programmer|full[- ]stack|backend|frontend|front[- ]end|back[- ]end|legal|counsel|attorney|"
     r"accountant|nurse|driver|technician|mechanic|analytics|"
     r"video|videographer|animat\w+|photograph\w*|graphic\w*|copywrit\w*|social media|influencer|"
-    r"paid (?:social|media|search)|performance marketing|ppc|media buyer|"
+    r"paid (?:social|media|search)|performance marketing|ppc|media buyer|technical account manager|"
     r"sql|postgres\w*|sap|erp|database|dba|sre|infrastructure|tester|"
     r"technical (?:project|program|programme) manager|qa (?:analyst|engineer|tester)|software qa|"
     r"duck creek|jaggaer)\b", re.I)
