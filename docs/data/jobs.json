@@ -1,5 +1,288 @@
 [
  {
+  "id": "099587101f73bc2d",
+  "title": "Entry-Level Account Manager",
+  "company": "NoGigiddy",
+  "location": "Anywhere in the World",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://weworkremotely.com/remote-jobs/nogigiddy-entry-level-account-manager-4",
+  "posted": "2026-05-20",
+  "salary": "37-49 LPA",
+  "match": 70,
+  "section": "salary",
+  "contract": true,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "WeWorkRemotely",
+  "sent_on": "2026-10-28"
+ },
+ {
+  "id": "cce4e22ec4d1b52c",
+  "title": "Marketing Specialist",
+  "company": "Jobgether",
+  "location": "India",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jobs.lever.co/jobgether/c10d141f-ac2a-48e2-9a65-76880dee23be",
+  "posted": "2026-10-28",
+  "salary": "No salary mentioned",
+  "match": 61,
+  "section": "unlisted",
+  "contract": false,
+  "from_alert": false,
+  "flags": [
+   {
+    "level": "info",
+    "text": "unusual title, but the description matches your work"
+   }
+  ],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Lever",
+  "sent_on": "2026-10-28"
+ },
+ {
+  "id": "dd9aa86d6fc730ad",
+  "title": "Control Tower Associate",
+  "company": "Jobgether",
+  "location": "India",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jobs.lever.co/jobgether/74ffaa0d-9e3d-4d92-909d-ce4cbd4b2161",
+  "posted": "2026-10-23",
+  "salary": "No salary mentioned",
+  "match": 53,
+  "section": "unlisted",
+  "contract": false,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Lever",
+  "sent_on": "2026-10-28"
+ },
+ {
+  "id": "95bfba38d88b568b",
+  "title": "Technical Account Manager",
+  "company": "Expel",
+  "location": "Anywhere in the World",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://weworkremotely.com/remote-jobs/expel-technical-account-manager",
+  "posted": "2026-10-19",
+  "salary": "135-160 LPA",
+  "match": 53,
+  "section": "salary",
+  "contract": false,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "WeWorkRemotely",
+  "sent_on": "2026-10-28"
+ },
+ {
+  "id": "b7bc08f0223b5e45",
+  "title": "Estimator I",
+  "company": "Jobgether",
+  "location": "India",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jobs.lever.co/jobgether/8d05e511-d06b-4552-8ad8-89009ec616c6",
+  "posted": "2026-10-28",
+  "salary": "No salary mentioned",
+  "match": 52,
+  "section": "unlisted",
+  "contract": false,
+  "from_alert": false,
+  "flags": [
+   {
+    "level": "info",
+    "text": "asks for an engineering / data degree: check whether it is really required"
+   }
+  ],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Lever",
+  "sent_on": "2026-10-28"
+ },
+ {
+  "id": "01c1c27041e99b90",
+  "title": "Growth Operations Manager",
+  "company": "Jobgether",
+  "location": "India",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jobs.lever.co/jobgether/5eac4c9c-0f4e-4df9-b2d7-5182e4ec4702",
+  "posted": "2026-10-27",
+  "salary": "No salary mentioned",
+  "match": 44,
+  "section": "near",
+  "contract": false,
+  "from_alert": false,
+  "flags": [
+   {
+    "level": "info",
+    "text": "unusual title, but the description matches your work"
+   }
+  ],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Lever",
+  "sent_on": "2026-10-28"
+ },
+ {
+  "id": "0d29e9a11a34eeaf",
+  "title": "Content Coordinator (U.S. Based, Remote Contractor)",
+  "company": "SimpleTiger",
+  "location": "Anywhere in the World",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://weworkremotely.com/remote-jobs/simpletiger-content-coordinator-u-s-based-remote-contractor",
+  "posted": "2026-10-07",
+  "salary": "No salary mentioned",
+  "match": 42,
+  "section": "near",
+  "contract": true,
+  "from_alert": false,
+  "flags": [
+   {
+    "level": "info",
+    "text": "unusual title, but the description matches your work"
+   }
+  ],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "WeWorkRemotely",
+  "sent_on": "2026-10-28"
+ },
+ {
+  "id": "6fceaff65fcbd226",
+  "title": "CMS Specialist",
+  "company": "Forbes",
+  "location": "India",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://himalayas.app/companies/forbes/jobs/cms-specialist?utm_source=api",
+  "posted": "2026-10-28",
+  "salary": "No salary mentioned",
+  "match": 41,
+  "section": "near",
+  "contract": false,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Himalayas",
+  "sent_on": "2026-10-28"
+ },
+ {
+  "id": "d6bc04bc3a3539c2",
+  "title": "Marketing Operations Specialist - Direct Response (GoHighLevel / ActiveCampaign)",
+  "company": "Jobgether",
+  "location": "India",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jobs.lever.co/jobgether/be932f8c-f3e3-490e-99f4-a0a5e0b21b85",
+  "posted": "2026-10-28",
+  "salary": "No salary mentioned",
+  "match": 41,
+  "section": "near",
+  "contract": true,
+  "from_alert": false,
+  "flags": [
+   {
+    "level": "info",
+    "text": "unusual title, but the description matches your work"
+   }
+  ],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Lever",
+  "sent_on": "2026-10-28"
+ },
+ {
+  "id": "b1371adb3ce3e923",
+  "title": "Payroll Expert, Project Temporary",
+  "company": "Jobgether",
+  "location": "India",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jobs.lever.co/jobgether/177276fe-7b96-4e3a-95b1-0769bb6026a3",
+  "posted": "2026-10-26",
+  "salary": "No salary mentioned",
+  "match": 38,
+  "section": "near",
+  "contract": false,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Lever",
+  "sent_on": "2026-10-28"
+ },
+ {
+  "id": "424ab5590062c07d",
+  "title": "Associate Clinical Operations Leader",
+  "company": "Jobgether",
+  "location": "India",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jobs.lever.co/jobgether/707bfd17-baf9-4c4f-b6b9-179958a51296",
+  "posted": "2026-10-22",
+  "salary": "No salary mentioned",
+  "match": 36,
+  "section": "near",
+  "contract": false,
+  "from_alert": false,
+  "flags": [
+   {
+    "level": "info",
+    "text": "unusual title, but the description matches your work"
+   }
+  ],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Lever",
+  "sent_on": "2026-10-28"
+ },
+ {
   "id": "0e1db56700f69d6f",
   "title": "Paid Social Manager",
   "company": "Jobgether",
