@@ -1,2 +1,1 @@
-// Fill these two values in once (see the setup steps in the chat). Leave them empty to keep everything on one device only.
-window.SYNC = { projectId: "", apiKey: "" };
+   window.SYNC = { projectId: "tp-job-tracker", apiKey: "AIzaSyDmgDAGccQK43d9uHF6FsUgOJM69t-YX04" };
