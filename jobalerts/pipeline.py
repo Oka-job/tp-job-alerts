@@ -74,6 +74,8 @@ def evaluate(job, cfg, now, seen):
         return "sales-driven duties"
     if rules.creative_heavy(desc):
         return "main duty is content or creative production"
+    if rules.tech_heavy(desc):
+        return "IT / engineering role"
     if rules.needs_foreign_language(desc, cfg.get("foreign_languages", [])):
         return "needs a non-English language"
     job["degree_flag"] = rules.needs_unheld_degree(desc)     # shown with a flag, not dropped
@@ -145,6 +147,12 @@ def score(job, cfg):
     s += 2 if age is None else 5 if age <= 3 else 3 if age <= 7 else 1
     s += {"in_range": 5, "unlisted": 2, "near": 1}.get(job["salary_status"], 0)
     s += 3
+    pref, yrs = cfg.get("preferred_experience"), job.get("min_years")
+    if pref and yrs is not None:                    # you are aiming at roles asking for 3 to 5 years
+        if pref[0] <= yrs <= pref[1]:
+            s += cfg.get("experience_bonus", 6)
+        elif yrs < pref[0]:
+            s -= cfg.get("under_experience_penalty", 3)
     if job.get("senior_title"):
         s -= 8
     if job.get("warn_count") == 1:
@@ -155,8 +163,20 @@ def score(job, cfg):
     return job["score"]
 
 
+def bucket_of(job, cfg):
+    """'remote', 'blr' (Bangalore hybrid) or 'mum' (Mumbai hybrid; the only other hybrid place allowed)."""
+    if job.get("mode") == "remote":
+        return "remote"
+    if cfg.get("priority_cities") and rules.in_hybrid_city(job, cfg["priority_cities"]):
+        return "blr"
+    return "mum"
+
+
 def select(jobs, cfg):
-    """Returns (picked, flagged). picked is at most daily_count jobs."""
+    """Returns (picked, flagged). picked is at most daily_count jobs.
+    With daily_mix set (for example 4 remote + 4 Bangalore hybrid + 2 Mumbai hybrid) each group gets its places first,
+    best match first. A group with too few jobs leaves its places to the best of the others, so the list still reaches
+    daily_count whenever enough jobs passed the filters."""
     n, cap = cfg.get("daily_count", 10), cfg.get("max_per_company", 2)
     exempt = {norm(x) for x in cfg.get("cap_exempt", [])}      # job boards that post for many companies
     ok = [j for j in jobs if not j["suspicious"]]
@@ -170,22 +190,39 @@ def select(jobs, cfg):
     strict_ids = {id(j) for j in strict}
     near = sorted([j for j in ok if id(j) not in strict_ids and j["score"] >= cfg.get("near_min_score", 25)], key=rank)
 
-    picked, per = [], Counter()
-
-    def take(lst, section_of):
-        for j in lst:
-            if len(picked) >= n:
-                return
-            c = norm(j.get("company"))
-            if c and c not in exempt and per[c] >= cap:
-                continue
-            per[c] += 1
-            j["section"] = section_of(j)
-            picked.append(j)
-
-    take(strict, lambda j: "salary" if j["salary_status"] == "in_range" else "unlisted")
+    ordered = [(j, "salary" if j["salary_status"] == "in_range" else "unlisted") for j in strict]
     if cfg.get("near_match_fill", False):
-        take(near, lambda j: "near")
+        ordered += [(j, "near") for j in near]
+
+    picked, per, used = [], Counter(), set()
+
+    def add(j, section):
+        c = norm(j.get("company"))
+        if c and c not in exempt and per[c] >= cap:
+            return False
+        per[c] += 1
+        j["section"] = section
+        picked.append(j)
+        used.add(id(j))
+        return True
+
+    mix = cfg.get("daily_mix")
+    if mix:
+        quota = {"remote": mix.get("remote", 0), "blr": mix.get("hybrid_bangalore", 0), "mum": mix.get("hybrid_mumbai", 0)}
+        for b in ("remote", "blr", "mum"):
+            got = 0
+            for j, sec in ordered:
+                if got >= quota[b] or len(picked) >= n:
+                    break
+                if id(j) in used or bucket_of(j, cfg) != b:
+                    continue
+                if add(j, sec):
+                    got += 1
+    for j, sec in ordered:              # fill any places that are still free, best first
+        if len(picked) >= n:
+            break
+        if id(j) not in used:
+            add(j, sec)
     flagged = sorted(sus, key=rank)[: cfg.get("suspicious_listed_max", 5)]
     for j in flagged:
         j["section"] = "suspicious"

@@ -74,7 +74,9 @@ def remoteok(opts):
 
 def weworkremotely(opts):
     out = []
-    for feed in ("remote-jobs.rss", "categories/all-other-remote-jobs.rss"):
+    for feed in ("remote-jobs.rss", "categories/all-other-remote-jobs.rss",
+                 "categories/remote-sales-and-marketing-jobs.rss", "categories/remote-management-and-finance-jobs.rss",
+                 "categories/remote-product-jobs.rss", "categories/remote-customer-support-jobs.rss"):
         r = http(f"https://weworkremotely.com/{feed}")
         root = ET.fromstring(r.content)
         for it in root.iter("item"):
@@ -240,6 +242,16 @@ def greenhouse(opts):
     return out
 
 
+def _lever_text(j):
+    """Lever keeps the responsibilities / requirements in separate 'lists' and the rest in 'additional'.
+    Reading only the opening text missed years of experience, languages and so on, so everything is joined."""
+    parts = [j.get("descriptionPlain") or strip_html(j.get("description"))]
+    for lst in j.get("lists") or []:
+        parts.append(f"{lst.get('text') or ''}\n{strip_html(lst.get('content'))}")
+    parts.append(j.get("additionalPlain") or strip_html(j.get("additional")))
+    return "\n".join(p for p in parts if p)
+
+
 def lever(opts):
     out = []
     for token, name in _companies(opts):
@@ -258,7 +270,7 @@ def lever(opts):
             out.append(mk(source="Lever", source_id=f"{token}-{j.get('id')}", title=j.get("text"), company=name,
                           location=cats.get("location") or ", ".join(cats.get("allLocations") or []),
                           url=j.get("hostedUrl"), posted=parse_dt(j.get("createdAt")),
-                          description=j.get("descriptionPlain") or strip_html(j.get("description")),
+                          description=_lever_text(j),
                           salary_text=sal, employment_type=cats.get("commitment") or "",
                           workplace=j.get("workplaceType")))
     return out
@@ -414,11 +426,62 @@ def smartrecruiters(opts):
 
 from .alerts import email_alerts  # noqa: E402  (needs mk/http above)
 
+def _feed_text(el, *tags):
+    for t in tags:
+        v = el.findtext(t)
+        if v and v.strip():
+            return v.strip()
+    return ""
+
+
+def rss(opts):
+    """Any job board that publishes an RSS or Atom feed. Add feeds in config.yaml under sources > rss > feeds.
+    A feed that cannot be read is skipped and the log says so."""
+    out = []
+    atom = "{http://www.w3.org/2005/Atom}"
+    for f in opts.get("feeds") or []:
+        url, name = f["url"], f.get("name") or f["url"]
+        try:
+            root = ET.fromstring(http(url).content)
+        except Exception as e:
+            print(f"   rss/{name}: could not read ({str(e)[:60]})")
+            continue
+        items = list(root.iter("item")) or list(root.iter(atom + "entry"))
+        got = 0
+        for it in items:
+            link = _feed_text(it, "link")
+            if not link:
+                l = it.find(atom + "link")
+                link = (l.get("href") if l is not None else "") or ""
+            title = _feed_text(it, "title", atom + "title")
+            company = _feed_text(it, "company", "author", atom + "author/" + atom + "name") or f.get("company") or name
+            if " at " in title and not f.get("company") and company == name:
+                title, _, company = title.rpartition(" at ")
+            desc = strip_html(_feed_text(it, "description", "summary", atom + "summary", atom + "content",
+                                         "{http://purl.org/rss/1.0/modules/content/}encoded"))
+            out.append(mk(source=f"RSS {name}", source_id=_feed_text(it, "guid", atom + "id") or link, title=title,
+                          company=company, location=_feed_text(it, "location", "region", "country"), url=link,
+                          posted=parse_dt(_feed_text(it, "pubDate", "published", atom + "published", atom + "updated")),
+                          description=desc, remote_source=bool(f.get("remote", False))))
+            got += 1
+        print(f"   rss/{name}: {got} jobs")
+    return out
+
+
+def workingnomads(opts):
+    out = []
+    for j in http("https://www.workingnomads.com/api/exposed_jobs/").json():
+        out.append(mk(source="WorkingNomads", source_id=j.get("url"), title=j.get("title"), company=j.get("company_name"),
+                      location=j.get("location") or "", url=j.get("url"), posted=parse_dt(j.get("pub_date")),
+                      description=strip_html(j.get("description")), remote_source=True))
+    return out
+
+
 SOURCES = {
     "remotive": remotive, "remoteok": remoteok, "weworkremotely": weworkremotely, "himalayas": himalayas,
     "jobicy": jobicy, "adzuna": adzuna, "greenhouse": greenhouse, "lever": lever, "ashby": ashby,
     "workable": workable, "workday": workday, "serpapi": serpapi, "jooble": jooble,
-    "smartrecruiters": smartrecruiters, "email_alerts": email_alerts,
+    "smartrecruiters": smartrecruiters, "email_alerts": email_alerts, "rss": rss, "workingnomads": workingnomads,
 }
 
 

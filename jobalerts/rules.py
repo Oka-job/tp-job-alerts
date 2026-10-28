@@ -142,7 +142,8 @@ def required_experience(text):
         ctx = text[max(0, m.start() - 80): m.end() + 80].lower()
         if not re.search(r"experien|\bexp\b|worked|background|track record", ctx):
             continue
-        pre = text[max(0, m.start() - 40): m.start()].lower()
+        pre = text[max(0, m.start() - 40): m.start()]
+        pre = re.split(r"[.\n:;!?]", pre)[-1].lower()      # same sentence only ("What We Are Looking For" is a heading, not history)
         if re.search(r"\b(we|our|we've|we have|company|firm|team|over)\b", pre):
             continue
         lo = int(m.group(1))
@@ -360,7 +361,11 @@ TITLE_EXCLUDE = re.compile(
     r"business development|new business|security|cyber\w*|recruit\w*|talent acquisition|data scientist|machine learning|ml|ai|"
     r"software|programmer|full[- ]stack|backend|frontend|front[- ]end|back[- ]end|legal|counsel|attorney|"
     r"accountant|nurse|driver|technician|mechanic|analytics|"
-    r"video|videographer|animat\w+|photograph\w*|graphic\w*|copywrit\w*|social media|influencer)\b", re.I)
+    r"video|videographer|animat\w+|photograph\w*|graphic\w*|copywrit\w*|social media|influencer|"
+    r"paid (?:social|media|search)|performance marketing|ppc|media buyer|"
+    r"sql|postgres\w*|sap|erp|database|dba|sre|infrastructure|tester|"
+    r"technical (?:project|program|programme) manager|qa (?:analyst|engineer|tester)|software qa|"
+    r"duck creek|jaggaer)\b", re.I)
 
 # SOFT titles: odd or ambiguous titles that are NOT blocked. The description decides (see pipeline.role_tier).
 TITLE_SOFT = re.compile(
@@ -379,7 +384,7 @@ _COLD = re.compile(
     r"up[- ]?sell\w*|cross[- ]?sell\w*|commission[- ]based|commission structure|earn\w*\s+commissions?|"
     r"(?:sales|revenue|monthly|quarterly|annual|individual)\s+(?:targets?|goals?)|"
     r"(?:meet|hit|achieve|exceed|deliver)\w*\s+(?:your\s+|the\s+)?(?:monthly\s+|quarterly\s+|annual\s+|individual\s+)?targets?|"
-    r"target[- ]driven|sales[- ]driven", re.I)
+    r"target[- ]driven|sales[- ]driven|expand\w*\s+(?:your\s+|the\s+)?(?:existing\s+)?(?:client\s+)?accounts|account expansion", re.I)
 
 # Weaker sales wording: one or two mentions are fine, three different ones means it is a sales job.
 _SALES_WEAK = [re.compile(p, re.I) for p in (
@@ -403,6 +408,20 @@ _OFFICE_DAYS = re.compile(
 def needs_cold_calling(text):
     """Cold calling, quotas, sales or revenue targets, upselling, commission: dropped on one mention."""
     return bool(_COLD.search(text or ""))
+
+
+_TECH = [re.compile(p, re.I) for p in (
+    r"sql server|postgres\w*|mysql|t-sql|stored procedures?", r"api testing|postman|selenium|test automation|test cases?",
+    r"kubernetes|docker|devops|ci/cd|\bsre\b", r"\blinux\b|systems administration", r"\baws\b|\bazure\b|\bgcp\b|google cloud",
+    r"cloud (?:infrastructure|migration|implementation)", r"network (?:infrastructure|automation)", r"\berp\b|\bsap\b",
+    r"\betl\b|data warehouse|schema conversion", r"\bpython\b|\bjava\b|javascript|\.net\b",
+    r"software engineering|engineering background|technical background", r"duck creek|jaggaer", r"defect lifecycle|regression testing")]
+
+
+def tech_heavy(text):
+    """An IT / engineering job: three different kinds of technical wording in the description."""
+    t = text or ""
+    return sum(1 for rx in _TECH if rx.search(t)) >= 3
 
 
 def sales_heavy(text):
