@@ -5,9 +5,13 @@
 # see README, "Keeping your salary range private".
 # ---------------------------------------------------------------------------
 
-daily_count: 10            # max jobs per message (fewer if fewer qualify)
+daily_count: 20            # jobs in the main daily message (10 remote + 5 Bangalore hybrid + 5 Mumbai hybrid, see daily_mix)
 max_age_days: 0            # 0 = no limit on how old a posting is (fresher jobs are still ranked first)
-max_experience_years: 5    # skip jobs whose minimum experience is above this (jobs asking 1-5 years are fine)
+max_experience_years: 5    # skip jobs whose minimum experience is above this
+preferred_experience: [3, 5]   # you are aiming at roles asking for 3 to 5 years: those rank higher, jobs asking less rank a little lower
+experience_bonus: 6
+under_experience_penalty: 3
+daily_mix: {remote: 10, hybrid_bangalore: 5, hybrid_mumbai: 5}   # the 20 daily jobs (spare places go to the best of the rest). The alert-email message adds 10 more
 max_per_company: 2         # stops one company filling the whole list
 cap_exempt: [jobgether]    # Jobgether posts jobs for many different companies, so the limit does not apply to it
 alert_daily_count: 10      # jobs per day in the SEPARATE message built from alert emails (LinkedIn / Naukri / Indeed)
@@ -232,6 +236,11 @@ sources:
   himalayas:
     enabled: true
     pages: 5
+  workingnomads:   # remote job board with a public job list
+    enabled: true
+  rss:             # ANY job board that has an RSS or Atom feed. Add one line per feed: {name: Name, url: https://..., remote: true}
+    enabled: true  # (a feed that cannot be read is skipped and the log says so). Leave the list empty if you have none yet.
+    feeds: []
   jobicy:
     enabled: true
     geos: [india, apac, anywhere]
@@ -259,10 +268,10 @@ sources:
   # NOT confirmed. The first run's log says 'board not found' for any wrong name, and those can simply be removed.
   greenhouse:
     enabled: true
-    companies: []
+    companies: [coinbase, intercom, binance, stripe, pinterest, reddit, thetradedesk, doubleverify, pubmatic, inmobi, postman, browserstack, zeta, moengage, clevertap]
   lever:
     enabled: true
-    companies: [meesho, jobgether]
+    companies: [meesho, jobgether, cred, groww, razorpay, phonepe, dream11]
   ashby:
     enabled: true
     companies: []
