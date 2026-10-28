@@ -124,6 +124,8 @@ roles:
     - pim
     - stibo
     - product content
+    - content coordinator
+    - content executive
     - catalog*
     - catalogue*
   duties:    # phrases in a job DESCRIPTION that describe your kind of work
@@ -137,7 +139,6 @@ roles:
     - client communication
     - client relationship*
     - stakeholder management
-    - stakeholder*
     - account management
     - account handling
     - media planning
@@ -146,8 +147,6 @@ roles:
     - ad operations
     - onsite media
     - brand partners
-    - approvals
-    - compliance
     - press release*
     - media relations
     - brand communications
@@ -156,9 +155,8 @@ roles:
     - migration
     - reporting dashboards
     - campaign qa
-    - q&a
-    - quality assurance
     - campaign testing
+    - campaign q&a
     - marketplace
     - e-commerce
     - ecommerce
@@ -184,7 +182,7 @@ skills:
   - campaign execution
   - campaign compliance
   - campaign qa
-  - q&a
+  - campaign q&a
   - stakeholder management
   - client servicing
   - account management
@@ -268,10 +266,10 @@ sources:
   # NOT confirmed. The first run's log says 'board not found' for any wrong name, and those can simply be removed.
   greenhouse:
     enabled: true
-    companies: [coinbase, intercom, binance, stripe, pinterest, reddit, thetradedesk, doubleverify, pubmatic, inmobi, postman, browserstack, zeta, moengage, clevertap]
+    companies: [coinbase, intercom, binance, stripe, pinterest, reddit, thetradedesk, doubleverify, pubmatic, inmobi]
   lever:
     enabled: true
-    companies: [meesho, jobgether, cred, groww, razorpay, phonepe, dream11]
+    companies: [meesho, jobgether, cred]
   ashby:
     enabled: true
     companies: []
