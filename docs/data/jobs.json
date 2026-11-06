@@ -1,5 +1,157 @@
 [
  {
+  "id": "e4bdc61ced377cb6",
+  "title": "[Remote] Associate Manager, Retail Media Network (Remote)",
+  "company": "remote quest jobs",
+  "location": "Anywhere",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://us.remotejobs.dedyn.io/job/remote-associate-manager-retail-media-network-remote-160041c0?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+  "posted": null,
+  "salary": "No salary mentioned",
+  "match": 98,
+  "section": "unlisted",
+  "contract": false,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Google Jobs",
+  "sent_on": "2026-11-06"
+ },
+ {
+  "id": "381084b4114cb507",
+  "title": "Remote Paid Ads Manager (eCommerce)",
+  "company": "Naukri Mitra",
+  "location": "Anywhere",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://naukrimitra.in/job/remote-paid-ads-manager-ecommerce/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+  "posted": null,
+  "salary": "44-440 LPA",
+  "match": 89,
+  "section": "salary",
+  "contract": false,
+  "from_alert": false,
+  "flags": [
+   {
+    "level": "info",
+    "text": "asks for an engineering / data degree: check whether it is really required"
+   }
+  ],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Google Jobs",
+  "sent_on": "2026-11-06"
+ },
+ {
+  "id": "a1f2573bef5b6045",
+  "title": "Retail Media Specialist",
+  "company": "remote quest jobs",
+  "location": "Anywhere",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://us.remotejobs.dedyn.io/job/retail-media-specialist-039cded6?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+  "posted": null,
+  "salary": "55-62 LPA",
+  "match": 78,
+  "section": "salary",
+  "contract": false,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Google Jobs",
+  "sent_on": "2026-11-06"
+ },
+ {
+  "id": "4294d5b6f21ed0b8",
+  "title": "Marketplace Manager - Amazon & Walmart",
+  "company": "Ten32 Media",
+  "location": "United States",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jooble.org/away/-984162971171895467?p=1&pos=3&rgn=55126&cid=22697&ckey=retail+media+remote&jobAge=25&brelb=10&scr=2749.9219&bscr=2749.9219&aq=-2904193357085756275&elckey=7538467390362342022",
+  "posted": "2026-11-04",
+  "salary": "No salary mentioned",
+  "match": 68,
+  "section": "unlisted",
+  "contract": false,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Jooble",
+  "sent_on": "2026-11-06"
+ },
+ {
+  "id": "04b3135c11cee0a5",
+  "title": "Remote Ecommerce Account Manager - Retail Growth",
+  "company": "BrandJump",
+  "location": "United States",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jooble.org/away/-3933924533499227980?p=1&pos=2&rgn=55126&cid=22697&ckey=account+manager+ecommerce+remote&jobAge=48&brelb=10&scr=1344.4043&bscr=1344.4043&aq=-1965716098268398555&elckey=2713561652423973497",
+  "posted": "2026-11-04",
+  "salary": "No salary mentioned",
+  "match": 60,
+  "section": "unlisted",
+  "contract": false,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Jooble",
+  "sent_on": "2026-11-06"
+ },
+ {
+  "id": "52157379a2e537df",
+  "title": "Senior Integrated Campaigns Manager",
+  "company": "Vercel Corp",
+  "location": "San Francisco, CA",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jooble.org/away/4764941320045037201?p=1&pos=15&rgn=55126&cid=22697&ckey=campaign+manager+remote&jobAge=72&brelb=10&scr=647.0718&bscr=647.0718&aq=-8176132993856981245&elckey=-5737143194208500443",
+  "posted": "2026-11-03",
+  "salary": "132-182 LPA",
+  "match": 25,
+  "section": "near",
+  "contract": false,
+  "from_alert": false,
+  "flags": [
+   {
+    "level": "warn",
+    "text": "pay looks too high for the experience asked"
+   },
+   {
+    "level": "info",
+    "text": "unusual title and very little text: open the link to check what the job really involves"
+   }
+  ],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Jooble",
+  "sent_on": "2026-11-06"
+ },
+ {
   "id": "8950e1dd5aa0c6c5",
   "title": "Remote Marketing & Public Relations Manager",
   "company": "Human Growth Foundation",
