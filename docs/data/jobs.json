@@ -1,5 +1,115 @@
 [
  {
+  "id": "d7c73d844cb035ca",
+  "title": "Retail Operations Coordinator / Shop Care Assistant",
+  "company": "Jobgether",
+  "location": "India",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jobs.lever.co/jobgether/84d5f9b2-b6a6-4482-ba50-f4ae569fc91b",
+  "posted": "2026-11-17",
+  "salary": "No salary mentioned",
+  "match": 54,
+  "section": "unlisted",
+  "contract": false,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Lever",
+  "sent_on": "2026-11-17"
+ },
+ {
+  "id": "8cf1425d891186d8",
+  "title": "Key Account Manager (PH-Based)",
+  "company": "aCommerce",
+  "location": "Anywhere",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jobgether.com/offer/6af47c2c1b1a9ee7d6658f21-key-account-manager-ph-based?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+  "posted": "2026-11-11",
+  "salary": "No salary mentioned",
+  "match": 53,
+  "section": "unlisted",
+  "contract": false,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Google Jobs",
+  "sent_on": "2026-11-17"
+ },
+ {
+  "id": "8d5b22d35eaffbd9",
+  "title": "Health Communications Expert - Remote | Upto $120/hr",
+  "company": "Mercor",
+  "location": "New York, NY",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jooble.org/away/-3574290120331968599?p=1&pos=20&rgn=55126&cid=22697&ckey=communications+remote&jobAge=72&brelb=110&scr=511.49213&bscr=511.49213&aq=-8766559639631715245&elckey=8596519417102147046",
+  "posted": "2026-11-14",
+  "salary": "about 220 LPA",
+  "match": 39,
+  "section": "near",
+  "contract": false,
+  "from_alert": false,
+  "flags": [
+   {
+    "level": "warn",
+    "text": "pay looks too high for the experience asked"
+   },
+   {
+    "level": "info",
+    "text": "unusual title and very little text: open the link to check what the job really involves"
+   }
+  ],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Jooble",
+  "sent_on": "2026-11-17"
+ },
+ {
+  "id": "e0df6b11b9d728ff",
+  "title": "Health Communications Expert - Fully Remote | Upto $120/hr",
+  "company": "Mercor",
+  "location": "San Francisco, CA",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jooble.org/away/9162515531439042983?p=1&pos=16&rgn=55126&cid=22697&ckey=communications+remote&jobAge=288&brelb=110&scr=514.0972&bscr=514.0972&aq=-8766559639631715245&elckey=8596519417102147046",
+  "posted": "2026-11-05",
+  "salary": "about 220 LPA",
+  "match": 37,
+  "section": "near",
+  "contract": false,
+  "from_alert": false,
+  "flags": [
+   {
+    "level": "warn",
+    "text": "pay looks too high for the experience asked"
+   },
+   {
+    "level": "info",
+    "text": "unusual title and very little text: open the link to check what the job really involves"
+   }
+  ],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Jooble",
+  "sent_on": "2026-11-17"
+ },
+ {
   "id": "a3d3ec3271d1f780",
   "title": "eCommerce Coordinator",
   "company": "MultiplyMii",
