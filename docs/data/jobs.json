@@ -1,5 +1,79 @@
 [
  {
+  "id": "f43810ee7b6a8eae",
+  "title": "Communications Specialist",
+  "company": "Twilio",
+  "location": "Anywhere in the World",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://weworkremotely.com/remote-jobs/twilio-communications-specialist",
+  "posted": "2026-11-20",
+  "salary": "72-90 LPA",
+  "match": 81,
+  "section": "salary",
+  "contract": false,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "WeWorkRemotely",
+  "sent_on": "2026-11-21"
+ },
+ {
+  "id": "72e2d6a2762b5ee8",
+  "title": "Remote Ad Campaign Manager (East Coast Hours)",
+  "company": "Dev",
+  "location": "Atlanta, GA",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jooble.org/away/-5591858401798981553?p=1&pos=20&rgn=55126&cid=22697&ckey=campaign+manager+remote&jobAge=96&brelb=100&scr=439.16074&bscr=439.16074&aq=-6806502530131015267&elckey=-4527815281367352674",
+  "posted": "2026-11-17",
+  "salary": "No salary mentioned",
+  "match": 64,
+  "section": "unlisted",
+  "contract": false,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Jooble",
+  "sent_on": "2026-11-21"
+ },
+ {
+  "id": "37ead8020b724591",
+  "title": "Integrated Campaign Manager",
+  "company": "Fieldguide",
+  "location": "Remote",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jooble.org/away/2002387153599860351?p=1&pos=2&rgn=55126&cid=22697&ckey=campaign+manager+remote&jobAge=48&brelb=15&scr=513.6264&bscr=513.6264&aq=-6806502530131015267&elckey=-4527815281367352674",
+  "posted": "2026-11-19",
+  "salary": "167-188 LPA",
+  "match": 55,
+  "section": "salary",
+  "contract": false,
+  "from_alert": false,
+  "flags": [
+   {
+    "level": "warn",
+    "text": "pay looks too high for the experience asked"
+   }
+  ],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Jooble",
+  "sent_on": "2026-11-21"
+ },
+ {
   "id": "9db498e65c946611",
   "title": "Account Manager, UK & Ireland - Remote",
   "company": "Customer.io",
