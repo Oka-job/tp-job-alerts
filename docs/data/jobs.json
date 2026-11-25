@@ -1,5 +1,148 @@
 [
  {
+  "id": "cec8645548dc0f1d",
+  "title": "Account Manager, Retention & Growth - Remote",
+  "company": "Magic, Inc",
+  "location": "Asia Only",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://weworkremotely.com/remote-jobs/magic-inc-account-manager-retention-growth-remote",
+  "posted": "2026-11-24",
+  "salary": "No salary mentioned",
+  "match": 85,
+  "section": "unlisted",
+  "contract": false,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "WeWorkRemotely",
+  "sent_on": "2026-11-25"
+ },
+ {
+  "id": "38d6f7366161adac",
+  "title": "HubSpot Specialist",
+  "company": "Jobgether",
+  "location": "India",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jobs.lever.co/jobgether/14844711-ed0c-4a83-8696-2cef08662e2d",
+  "posted": "2026-11-25",
+  "salary": "No salary mentioned",
+  "match": 52,
+  "section": "unlisted",
+  "contract": false,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Lever",
+  "sent_on": "2026-11-25"
+ },
+ {
+  "id": "979ffb78ea982b24",
+  "title": "Project Manager Network & Telecom delivery",
+  "company": "Big Sky Global",
+  "location": "India",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jooble.org/desc/9103837905727989235?ckey=account+manager+hybrid+Mumbai&rgn=55126&pos=5&groupId=15382&elckey=7962392815582217800&p=1&aq=-1180584871772490124&cid=22697&jobAge=2&brelb=100&bscr=3.8683307&scr=3.8683307",
+  "posted": "2026-11-25",
+  "salary": "No salary mentioned",
+  "match": 48,
+  "section": "near",
+  "contract": false,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Jooble",
+  "sent_on": "2026-11-25"
+ },
+ {
+  "id": "d1d4b70b7abc30bf",
+  "title": "Enterprise Project Manager",
+  "company": "Canonical",
+  "location": "Anywhere",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jobicy.com/jobs/149549-enterprise-project-manager",
+  "posted": "2026-11-25",
+  "salary": "No salary mentioned",
+  "match": 48,
+  "section": "near",
+  "contract": false,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Jobicy",
+  "sent_on": "2026-11-25"
+ },
+ {
+  "id": "ca7c79c53f6dcd42",
+  "title": "Regional Account Manager",
+  "company": "Vision2 Marketing",
+  "location": "Las Vegas, NV",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jooble.org/away/-1972055618336593887?p=1&pos=16&rgn=55126&cid=22697&ckey=account+manager+ecommerce+remote&jobAge=58&brelb=110&scr=452.63876&bscr=452.63876&aq=-5508853995737671061&elckey=1795291236691340273",
+  "posted": "2026-11-23",
+  "salary": "No salary mentioned",
+  "match": 48,
+  "section": "near",
+  "contract": false,
+  "from_alert": false,
+  "flags": [],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Jooble",
+  "sent_on": "2026-11-25"
+ },
+ {
+  "id": "dd68cfa71eaca8c3",
+  "title": "Campaign and Launch Manager",
+  "company": "Cloudsmith",
+  "location": "Remote",
+  "mode": "remote",
+  "eligibility": "yes",
+  "url": "https://jooble.org/away/2760970142438722380?p=1&pos=11&rgn=55126&cid=22697&ckey=campaign+manager+remote&jobAge=226&brelb=15&scr=449.28073&bscr=449.28073&aq=-7861156623357946704&elckey=-6655413609941133667",
+  "posted": "2026-11-16",
+  "salary": "No salary mentioned",
+  "match": 36,
+  "section": "near",
+  "contract": false,
+  "from_alert": false,
+  "flags": [
+   {
+    "level": "info",
+    "text": "unusual title and very little text: open the link to check what the job really involves"
+   }
+  ],
+  "contact": {
+   "emails": [],
+   "phones": [],
+   "linkedin": []
+  },
+  "source": "Jooble",
+  "sent_on": "2026-11-25"
+ },
+ {
   "id": "a40beacfbeb0fdb6",
   "title": "eCommerce Merchandising & Catalogue Manager",
   "company": "iRESTORE Laser (Freedom Laser Therapy)",
